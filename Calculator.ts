@@ -9,15 +9,17 @@ export class Calculator {
     }
 
     public count(): number {
-        return this.words.filter(word => this.shouldWordBeCounted(word)).length;
+        return this.countPossibleWords(0, this.letters);
     }
 
-    private shouldWordBeCounted(word : string) {
-        if (this.letters.doesAWordExist(word)){
-            this.letters = this.letters.removeTheWordFromSet(word);
-            return true;
+    private countPossibleWords(index:number, letters:LetterWarehouse){
+        if(index >= this.words.length)
+            return 0;
+        let currentWord = this.words[index];
+        if(letters.doesAWordExist(currentWord))
+            return 1 + this.countPossibleWords(index+1, letters.removeTheWordFromSet(currentWord))
+        else
+            return this.countPossibleWords(index+1, letters);
 
-        }
-        return false;
     }
 }

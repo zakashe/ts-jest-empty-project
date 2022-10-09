@@ -11,17 +11,21 @@ export class LetterWarehouse {
     }
 
     public removeTheWordFromSet(word: string): LetterWarehouse {
-        var currentLetters:string = "";
-        for (const letter in this.lettersMap.keys()) {
-            for (let i = 0; i < this.lettersMap.get(letter); i++) {
-                currentLetters = currentLetters + letter;
-            }
-        }
-        const newWarehouse = new LetterWarehouse(currentLetters);
+        const newWarehouse = new LetterWarehouse(this.getCurrentLetters());
         for (let i = 0; i < word.length; i++) {
             newWarehouse.changeLetterCount(word[i], -1);
         }
         return newWarehouse;
+    }
+
+    private getCurrentLetters() {
+        var currentLetters: string = "";
+        this.lettersMap.forEach((value, letter) => {
+            for (let i = 0; i < value; i++) {
+                currentLetters = currentLetters + letter;
+            }
+        })
+        return currentLetters;
     }
 
     public doesAWordExist(word: string) {
