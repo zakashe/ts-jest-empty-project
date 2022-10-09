@@ -28,7 +28,7 @@ export class LetterWarehouse {
         return currentLetters;
     }
 
-    public doesAWordExist(word: string) {
+    public doesWordExist(word: string) {
         for (let i = 0; i < word.length; i++) {
             if (!this.doesLetterExist(word[i]))
                 return false;

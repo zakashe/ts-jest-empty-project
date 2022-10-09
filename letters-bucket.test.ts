@@ -31,4 +31,9 @@ describe('bowling', ()=>{
         const calculator = new Calculator('gdohmeo', ['oo','gh','dog', 'home']);
         expect(calculator.count()).toBe(2);
     })
+
+    test('many string, non-exclusive letters maximizing count, more intensive', ()=>{
+        const calculator = new Calculator('gdohmeo', ['gdohmeo','oo','gh','dog', 'home']);
+        expect(calculator.count()).toBe(2);
+    })
 })
