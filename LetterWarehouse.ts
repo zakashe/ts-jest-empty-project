@@ -1,9 +1,7 @@
 export class LetterWarehouse {
     private lettersMap: Map<string, number>;
-    private letters:string;
 
     constructor(letters: string) {
-        this.letters = letters;
         this.lettersMap = new Map<string, number>();
 
         for (let i = 0; i < letters.length; i++) {
@@ -13,7 +11,13 @@ export class LetterWarehouse {
     }
 
     public removeTheWordFromSet(word: string): LetterWarehouse {
-        const newWarehouse = new LetterWarehouse(this.letters);
+        var currentLetters:string = "";
+        for (const letter in this.lettersMap.keys()) {
+            for (let i = 0; i < this.lettersMap.get(letter); i++) {
+                currentLetters = currentLetters + letter;
+            }
+        }
+        const newWarehouse = new LetterWarehouse(currentLetters);
         for (let i = 0; i < word.length; i++) {
             newWarehouse.changeLetterCount(word[i], -1);
         }
