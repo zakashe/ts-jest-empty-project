@@ -14,7 +14,7 @@ export class Calculator {
 
     private shouldWordBeCounted(word : string) {
         if (this.letters.doesAWordExist(word)){
-            this.letters.removeTheWordFromSet(word);
+            this.letters = this.letters.removeTheWordFromSet(word);
             return true;
 
         }
