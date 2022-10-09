@@ -1,13 +1,20 @@
 export class Calculator {
     private letters:string;
-    private strings:string[];
-    constructor(letters: string, strings: string[]) {
+    private words:string[];
+    constructor(letters: string, words: string[]) {
         this.letters = letters;
-        this.strings = strings;
+        this.words = words;
     }
 
     public count(): number {
-        return this.strings.filter(s => this.letters.indexOf(s)>-1).length;
+        return this.words.filter(word => this.doesWordExist(word)).length;
     }
 
+    private doesWordExist(word : string) {
+        for (let i = 0; i < word.length; i++) {
+            if (this.letters.indexOf(word[i]) < 0)
+                return  false;
+        }
+        return true;
+    }
 }

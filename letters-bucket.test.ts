@@ -11,4 +11,8 @@ describe('bowling', ()=>{
         expect(calculator.count()).toBe(2);
     })
 
+    test('single string, same letters different order', ()=>{
+        const calculator = new Calculator('gdo', ['dog']);
+        expect(calculator.count()).toBe(1);
+    })
 })
